@@ -9,29 +9,29 @@ create table tbl_student (
 
 -- sample data.
 insert into tbl_student (std_no, std_name, std_phone)
-values('S2024-01', 'È«±æµ¿', '010-1234-5678');
+values('S2024-01', 'í™ê¸¸ë™', '010-1234-5678');
 insert into tbl_student (std_no, std_name, std_phone, address)
-values('S2024-02', '±è±æµ¿', '010-3333-4444', '¼­¿ï 100¹øÁö');
+values('S2024-02', 'ê¹€ê¸¸ë™', '010-3333-4444', 'ì„œìš¸ 100ë²ˆì§€');
 insert into tbl_student (std_no, std_name, std_phone)
-values('S2024-03', 'ÀÌÃ¢È£', '010-5555-7777');
+values('S2024-03', 'ì´ì°½í˜¸', '010-5555-7777');
 
 select *
 from tbl_student;
 
 update tbl_student
-set address = '´ëÀü 100'
+set address = 'ëŒ€ì „ 100'
 where std_no = 'S2024-01';
 
 insert into tbl_student (std_no, std_name, std_phone)
-values('S2024-04', '±è¹Î±Ô', '010-2222-5678');
+values('S2024-04', 'ê¹€ë¯¼ê·œ', '010-2222-5678');
 
 delete from tbl_student
 where std_no = 'S2024-04';
 
---»ıÀÏ, ÁÖ¼Ò º¯°æ.
+--ìƒì¼, ì£¼ì†Œ ë³€ê²½.
 update tbl_student
 set    std_name = nvl('', std_name)
-      ,std_phone = 'º¯°æ°ª'
+      ,std_phone = 'ë³€ê²½ê°’'
       ,birth_date = '2020-01-01'
 where std_no = 'S2024-02';
 
