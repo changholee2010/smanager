@@ -3,6 +3,7 @@ package co.yedam.control;
 import java.util.List;
 import java.util.Scanner;
 
+import co.yedam.common.Utils;
 import co.yedam.dao.StudentDAO;
 import co.yedam.vo.StudentVO;
 
@@ -17,8 +18,10 @@ public class StudentControl {
 		boolean isTrue = true;
 
 		while (isTrue) {
-			System.out.println("1.학생목록 2.등록 3.수정 4.삭제 5.종료");
-			System.out.print("선택> ");
+			Utils.printSubMenu("----------------------------------");
+			Utils.printSubMenu("1.학생목록 2.등록 3.수정 4.삭제 5.상위메뉴");
+			Utils.printSubMenu("----------------------------------");
+			Utils.printSubMenuNoLine("선택> ");
 			int menu = Integer.parseInt(scn.nextLine());
 
 			switch (menu) {
@@ -34,7 +37,7 @@ public class StudentControl {
 			case 4:
 				break;
 			case 5:
-				System.out.println("종료합니다.");
+				Utils.printSubMenu("상위메뉴로 이동합니다.");
 				isTrue = false;
 			}
 		}
@@ -44,18 +47,18 @@ public class StudentControl {
 	void modifyStudent() {
 		String sno = ""; // 블럭레벨 변수.
 		while (true) {
-			System.out.println("변경할 학생번호>");
+			Utils.printSubMenuNoLine("변경할 학생번호>");
 			sno = scn.nextLine();
 			if (sdao.selectExists(sno) == 1) {
 				// 학생번호 존재.
 				break;
 			}
-			System.out.println("찾는 학생번호가 없음 학생번호 다시 입력>");
+			Utils.printSubMenu("찾는 학생번호가 없음 학생번호 다시 입력>");
 		}
 
-		System.out.println("변경할 연락처>");
+		Utils.printSubMenuNoLine("변경할 연락처>");
 		String phone = scn.nextLine();
-		System.out.println("변경할 주소>");
+		Utils.printSubMenuNoLine("변경할 주소>");
 		String addr = scn.nextLine();
 
 		StudentVO svo = new StudentVO();
@@ -64,21 +67,21 @@ public class StudentControl {
 		svo.setStdNo(sno);
 
 		if (sdao.updateStudent(svo)) {
-			System.out.println("수정완료!");
+			Utils.printSubMenu("수정완료!");
 		}
 	}
 
 	// 등록 기능.
 	void addStudent() {
-		System.out.println(">학생번호 입력.");
+		Utils.printSubMenuNoLine(">학생번호 입력.");
 		String sno = scn.nextLine();
-		System.out.println(">학생이름 입력.");
+		Utils.printSubMenuNoLine(">학생이름 입력.");
 		String sname = scn.nextLine(); // ""
-		System.out.println(">연락처 입력.");
+		Utils.printSubMenuNoLine(">연락처 입력.");
 		String phon = scn.nextLine();
-		System.out.println(">주소 입력.");
+		Utils.printSubMenuNoLine(">주소 입력.");
 		String addr = scn.nextLine();
-		System.out.println(">생일 입력.");
+		Utils.printSubMenuNoLine(">생일 입력.");
 		String birth = scn.nextLine();
 
 		StudentVO std = new StudentVO();
@@ -90,19 +93,19 @@ public class StudentControl {
 
 		// 입력기능 호출.
 		if (sdao.insertStudent(std)) {
-			System.out.println("저장완료!");
+			Utils.printSubMenu("저장완료!");
 		} else {
-			System.out.println("처리중 예외발생!");
+			Utils.printSubMenu("처리중 예외발생!");
 		}
 	}
 
 	// 목록 출력 기능.
 	void studentList() {
 		List<StudentVO> students = sdao.selectList();
-		System.out.println("학생번호   학생이름  연락처");
-		System.out.println("--------------------------------");
+		Utils.printSubMenu("학생번호   학생이름  연락처");
+		Utils.printSubMenu("--------------------------------");
 		for (StudentVO svo : students) {
-			System.out.println(svo.briefShow());
+			Utils.printSubMenu(svo.briefShow());
 		}
 
 	} // end of studentList().
