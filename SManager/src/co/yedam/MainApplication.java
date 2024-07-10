@@ -7,5 +7,6 @@ public class MainApplication {
 		// 프로그램의 시작.
 		StudentControl scontrol = new StudentControl();
 		scontrol.run();
+		//요기수정됨.
 	}
 }
