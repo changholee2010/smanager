@@ -29,6 +29,7 @@ public class MainApplication {
 				break;
 			case 3:
 				System.out.println("수강관리.");
+				System.out.println("fork ??");
 				break;
 			case 4:
 				System.out.println("종료합니다.");
