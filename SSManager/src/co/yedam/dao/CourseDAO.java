@@ -1,5 +1,9 @@
 package co.yedam.dao;
 
-public class CourseDAO {
+import java.util.List;
+
+import co.yedam.vo.StudentVO;
+
+public class CourseDAO extends DAO {
 
 }
