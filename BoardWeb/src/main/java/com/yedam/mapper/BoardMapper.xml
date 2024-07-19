@@ -4,6 +4,22 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.BoardMapper">
 
+  <sql id="selectCondition">
+    where
+    <choose>
+      <when test="searchCondition == 'T'.toString() ">
+      title like '%'||#{keyword}||'%'
+      </when>
+      <when test="searchCondition == 'W'.toString() ">
+      writer like '%'||#{keyword}||'%'
+      </when>
+      <when test="searchCondition == 'TW'.toString() ">
+      title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%'
+      </when>
+      <otherwise>1 = 1</otherwise>
+    </choose>
+  </sql>
+
 	<select id="selectList" resultType="com.yedam.vo.BoardVO">
 	  select board_no
 	        ,title
@@ -13,6 +29,27 @@
 	        ,write_date
 	  from tbl_board
 	  order by board_no
+	</select>
+	
+	<!-- 페이징 목록. -->
+	<select id="selectListPaging" parameterType="com.yedam.common.SearchVO">
+		select b.*
+		from (select rownum rn, a.*
+      		from (select *
+          		  from tbl_board
+          		  <include refid="selectCondition"></include>
+            		order by board_no ) a ) b
+		where b.rn > (#{page} - 1) * 5
+		<![CDATA[
+		and   b.rn <= (#{page} * 5)
+		]]>
+	</select>
+	
+	<!-- 페이징 계산용 전체건수. -->
+	<select id="selectTotalCount" parameterType="com.yedam.common.SearchVO">
+	  select count(1)
+	  from tbl_board
+	  <include refid="selectCondition"></include>
 	</select>
 	
 	<insert id="insertBoard" parameterType="com.yedam.vo.BoardVO">
