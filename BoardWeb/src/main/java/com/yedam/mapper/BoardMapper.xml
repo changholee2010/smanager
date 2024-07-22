@@ -38,7 +38,7 @@
       		from (select *
           		  from tbl_board
           		  <include refid="selectCondition"></include>
-            		order by board_no ) a ) b
+            		order by board_no desc ) a ) b
 		where b.rn > (#{page} - 1) * 5
 		<![CDATA[
 		and   b.rn <= (#{page} * 5)
@@ -53,8 +53,8 @@
 	</select>
 	
 	<insert id="insertBoard" parameterType="com.yedam.vo.BoardVO">
-	  insert into tbl_board (board_no, title, writer, content)
-	  values(board_seq.nextval, #{title}, #{writer}, #{content} )
+	  insert into tbl_board (board_no, title, writer, content, image)
+	  values(board_seq.nextval, #{title}, #{writer}, #{content}, #{image} )
 	</insert>
 	
 	<update id="updateBoard" parameterType="com.yedam.vo.BoardVO">
@@ -82,6 +82,7 @@
 	        ,writer
 	        ,view_cnt
 	        ,write_date
+	        ,image
 	  from tbl_board
 	  where board_no = #{boardNo}
 	</select>

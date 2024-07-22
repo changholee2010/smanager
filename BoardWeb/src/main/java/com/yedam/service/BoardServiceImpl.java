@@ -31,6 +31,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean addBoard(BoardVO board) {
+		System.out.println(board);
 		return mapper.insertBoard(board) == 1;
 	}
 
