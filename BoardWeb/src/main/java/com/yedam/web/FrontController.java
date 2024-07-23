@@ -25,6 +25,7 @@ import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoard;
 import com.yedam.control.RemoveBoard;
 import com.yedam.control.StudentListControl;
+import com.yedam.control.TableControl;
 import com.yedam.control.UpdateBoard;
 
 /*
@@ -67,6 +68,7 @@ public class FrontController extends HttpServlet {
 		// 관리자가 사용하는 기능들..ex)회원목록.
 		map.put("/memberList.do", new MemberListControl());
 		map.put("/chart.do", new ChartControl());
+		map.put("/tables.do", new TableControl());
 	}
 
 	@Override

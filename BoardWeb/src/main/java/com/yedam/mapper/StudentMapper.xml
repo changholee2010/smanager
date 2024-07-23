@@ -10,6 +10,13 @@
     where member_id = #{id}
     and   member_pw = #{pw}
   </select>
+  
+  <select id="selectMembers">
+    select *
+    from tbl_member
+    where responsibility = #{res}
+    order by ${orderBy}
+  </select>
 
   <select id="studentList" resultType="student">
     select * from tbl_student order by std_no
