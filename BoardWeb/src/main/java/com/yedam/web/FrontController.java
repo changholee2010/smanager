@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.common.Control;
 import com.yedam.control.ActionControl;
 import com.yedam.control.AddBoardControl;
+import com.yedam.control.AddStudent;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardForm;
 import com.yedam.control.BoardListControl;
@@ -24,6 +25,9 @@ import com.yedam.control.LogoutControl;
 import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoard;
 import com.yedam.control.RemoveBoard;
+import com.yedam.control.RemoveStudent;
+import com.yedam.control.ScriptControl;
+import com.yedam.control.StudentJson;
 import com.yedam.control.StudentListControl;
 import com.yedam.control.TableControl;
 import com.yedam.control.UpdateBoard;
@@ -54,7 +58,7 @@ public class FrontController extends HttpServlet {
 		// 수정
 		map.put("/modifyBoard.do", new ModifyBoard()); // 수정화면
 		map.put("/updateBoard.do", new UpdateBoard()); // 수정처리
-		
+
 		// 로그인.
 		map.put("/loginForm.do", new LoginForm()); // 로그인화면 open.
 		map.put("/login.do", new LoginControl()); // 로그인 기능.
@@ -64,18 +68,27 @@ public class FrontController extends HttpServlet {
 		map.put("/stdList.do", new StudentListControl());
 		// 태그연습.
 		map.put("/action.do", new ActionControl());
-		
+
 		// 관리자가 사용하는 기능들..ex)회원목록.
 		map.put("/memberList.do", new MemberListControl());
 		map.put("/chart.do", new ChartControl());
 		map.put("/tables.do", new TableControl());
+
+		// 자바스크립트 연습하는 페이지 호출.
+		map.put("/javascript.do", new ScriptControl());
+		// 학생정보를 반환해주는 페이지(json).
+		map.put("/studentJson.do", new StudentJson());
+		// 학생정보(학번기준) 삭제.
+		map.put("/removeStudent.do", new RemoveStudent());
+		// 등록.
+		map.put("/addStudent.do", new AddStudent());
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) //
 			throws ServletException, IOException {
 		// boardList.do -목록. addBoard.do -등록.
-		String uri = req.getRequestURI(); // URL(http://localhost/BoardWeb/boardList.do) vs. URI
+		String uri = req.getRequestURI(); // /BoardWeb/boardList.do URL(http://localhost/BoardWeb/boardList.do) vs. URI
 		String context = req.getContextPath(); // 프로젝트 명.
 		String path = uri.substring(context.length()); // "/boardList.do"
 

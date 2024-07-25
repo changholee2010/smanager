@@ -14,7 +14,7 @@
   <select id="selectMembers">
     select *
     from tbl_member
-    where responsibility = #{res}
+    where responsibility = #{res}  <!-- 23 '23' -->
     order by ${orderBy}
   </select>
 
@@ -38,7 +38,7 @@
     set std_phone = #{stdPhone}
     where std_no = #{stdNo}
   </update>
-  
+
   <delete id="deleteStudent" parameterType="string">
     delete from tbl_student
     where std_no = #{stdNo}

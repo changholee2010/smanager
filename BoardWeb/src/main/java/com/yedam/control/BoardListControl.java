@@ -30,9 +30,9 @@ public class BoardListControl implements Control {
 		search.setPage(Integer.parseInt(page));
 		search.setSearchCondition(sc);
 
-		req.setAttribute("myName", "홍길동");
+//		req.setAttribute("myName", "홍길동");
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList(search);
+		List<BoardVO> list = svc.boardList(search); // 서비스 - 매퍼 
 		req.setAttribute("boardList", list);
 
 		// paging.

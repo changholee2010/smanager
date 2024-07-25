@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.yedam.common.DataSource;
 import com.yedam.mapper.StudentMapper;
 import com.yedam.vo.MemberVO;
+import com.yedam.vo.StudentVO;
 
 public class MemberServiceImpl implements MemberService {
 	SqlSession sqlSession = //
@@ -21,6 +22,21 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberVO> memberList(String res, String orderBy) {
 		return mapper.selectMembers(res, orderBy);
+	}
+
+	@Override
+	public List<StudentVO> studentList() {
+		return mapper.studentList();
+	}
+
+	@Override
+	public boolean removeStudent(String sno) {
+		return mapper.deleteStudent(sno) == 1;
+	}
+
+	@Override
+	public boolean addStudent(StudentVO svo) {
+		return mapper.insertStudent(svo) == 1;
 	}
 
 }
