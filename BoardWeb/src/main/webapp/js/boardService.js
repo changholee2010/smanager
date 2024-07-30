@@ -23,5 +23,12 @@ const svc = {
 		xhtp.open('get', 'removeReply.do?rn=' + rno);
 		xhtp.send();
 		xhtp.onload = loadCallback;
+	},
+	// 댓글갯수.
+	pagingCount(bno = 1, loadCallback) {
+		const xhtp = new XMLHttpRequest();
+		xhtp.open('get', 'pagingCount.do?bno=' + bno);
+		xhtp.send();
+		xhtp.onload = loadCallback;
 	}
 } // end of svc.
