@@ -21,7 +21,7 @@
 			<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 				<nav class="sb-sidenav-menu-nested nav">
 					<a class="nav-link" href="memberList.do">회원목록</a>
-					<a class="nav-link" href="layout-sidenav-light.html">회원권한관리</a>
+					<a class="nav-link" href="googleChart.do">차트(작성자별 건수집계)</a>
 				</nav>
 			</div>
 			<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -48,7 +48,8 @@
 							<a class="nav-link" href="password.html">Forgot Password</a>
 						</nav>
 					</div>
-					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"> 최고매출월
+					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"> 
+					  최고매출월
 						<div class="sb-sidenav-collapse-arrow">
 							<i class="fas fa-angle-down"></i>
 						</div>
